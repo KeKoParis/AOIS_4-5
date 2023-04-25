@@ -1,4 +1,4 @@
-def formatting(expr):
+def formatting(expr):  # Function converts expression to binary format
     expr = expr.replace(' ', '')
     if expr.find(')*('):
         number_input = cnf(expr)
@@ -7,7 +7,7 @@ def formatting(expr):
     return number_input
 
 
-def make_list(expr):
+def make_list(expr):  # Function makes a list out of string
     curr_expr = expr
     new_expr = list()
     if curr_expr.find(')+(') != -1:
@@ -26,7 +26,7 @@ def make_list(expr):
     return new_expr
 
 
-def cnf(expr):
+def cnf(expr):  # Function makes minterms of the function
     curr_expr = make_list(expr)
     dec = list()
     dec_str = ''
@@ -45,7 +45,7 @@ def cnf(expr):
     return dec_str
 
 
-def exclude(expr, dec):
+def exclude(expr, dec):  # Function excludes excess numbers from cnf minterms
     level = 0
 
     for i in reversed(range(6)):
@@ -64,14 +64,14 @@ def exclude(expr, dec):
     return number_list
 
 
-def convert_num(bin_number):
+def convert_num(bin_number):  # Function converts decimal number to binary
     dec_number = 0
     for i in range(len(bin_number)):
         dec_number += 2 ** i * int(bin_number[len(bin_number) - 1 - i])
     return dec_number
 
 
-def dnf(expr):
+def dnf(expr):  # Function makes minterms of the function
     curr_expr = make_list(expr)
     dec = list()
     dec_str = ''
